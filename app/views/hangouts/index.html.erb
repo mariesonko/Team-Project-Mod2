@@ -1,0 +1,6 @@
+<h1>All Hangouts</h1>
+<ul>
+  <% @hangouts.each do |hangout| %>
+  <li> <%= link_to hangout.restaurant.name, hangout_path(hangout) %></li>
+  <% end %>
+</ul>

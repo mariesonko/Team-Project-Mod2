@@ -1,0 +1,15 @@
+<h1>Hangout Profile</h1>
+<h4><%= @hangout.restaurant.name %></h4>
+<h4> <%= @hangout.restaurant.address %></h4>
+<h4> <%= @hangout.restaurant.cuisine %></h4>
+<h4> <%= @hangout.date %></h4>
+<h4> <%= @hangout.time %></h4>
+
+
+<br>
+<%= link_to "Back To All Hangouts", hangouts_path %>
+<br>
+<!-- add a 'join' button that associates the current session[:user] as the 'guest' to this hangout -->
+<br>
+<!-- we want to use the session[session[:current_user_id]] -->
+<!-- <%= button_to "Join", user_path(@hangout.guest_id), method: :join %> -->
