@@ -1,12 +1,19 @@
 <h1>Create a New Hangout </h1>
 
 <%= form_for @hangout do |f| %>
+
+<%= fields_for :user do |user|%>
+<%= user.label :name%>
+<%=  user.text_field :name%>
+<% end  %>
+
   <%= f.label :date, "Date" %>
   <%= f.text_field :date %>
 
   <%= f.label :time %>
   <%= f.text_field :time %>
 
+  <%= f.label :restaurant_id, "Choose a Restaurant" %>
   <%= f.collection_select :restaurant_id, Restaurant.all, :id, :name %>
 
   <%= f.submit %>
