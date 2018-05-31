@@ -33,18 +33,6 @@ class HangoutsController < ApplicationController
     end
   end
 
-  # def join
-  #   @hangout = Hangout.find(params[:id])
-  #   if request.post?
-  #     @hangout.guest = current_user
-  #     redirect_to user_path(current_user)
-  #   else
-  #     redirect_to hangouts_path
-  #   end 
-
-  # end
-
-
   def edit
     @hangout = Hangout.find(params[:id])
   end
