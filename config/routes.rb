@@ -4,11 +4,9 @@ Rails.application.routes.draw do
   resources :users, except: :index
   resources :hangouts
   resources :restaurants, only: [:index, :show]
-  # get '/login'=> 'sessions#new'
-  # post '/login'=> 'sessions#create'
-  # post '/logout'=> 'sessions#destroy'
 
   get "/signup", to: "users#new", as: "signup"
-  get "/login", to: "users#show", as: "login"
-
+  get "/login", to: "sessions#new", as: "login"
+  post '/sessions', to: "sessions#create", as: "sessions"
+  # post '/logout', to: "sessions#destroy", as: "sessions"
 end
