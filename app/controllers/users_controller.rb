@@ -13,8 +13,15 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
-    @user = User.find(params[:id])
+  def create
+    @user = User.new(user_params)
+    if @user.save
+      log_in(@user)
+      redirect_to user_path(@user)
+    else
+      render :new
+    end
+
   end
 
   def edit
@@ -32,6 +39,11 @@ class UsersController < ApplicationController
   private
 
   def user_params
+<<<<<<< HEAD
     params.require(:user).permit(:username, :password, :password_confirmation)
   end
+=======
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+>>>>>>> a7c660422c2522b4e3adf25895a1b8a76f3bb3ef
 end

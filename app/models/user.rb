@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-  has_secure_password
 
   has_many :restaurants, through: :hangouts
   has_many :active_hangouts,  class_name:  "Hangout",
@@ -11,5 +10,6 @@ class User < ApplicationRecord
   has_many :guests, through: :active_hangouts
   has_many :hosts, through: :passive_hangouts
 
+  has_secure_password
 
 end

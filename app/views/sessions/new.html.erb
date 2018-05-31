@@ -1,12 +1,13 @@
-<li><%= flash[:errors]  %></li>
-<h1>Log Into Your Acccount</h1>
-<%= form_tag sessions_path do %>
+<h1>Log In</h1>
+<%= form_for(:session, url: login_path) do |f| %>
 
-<%= label_tag :username %>
-<%= text_field_tag :username %>
+<%= f.label :email %>
+<%= f.email_field :email, class: 'form-control' %>
 
-<%= label_tag :password %>
-<%= password_field_tag :password %>
+<%= f.label :password %>
+<%= f.password_field :password, class: 'form-control' %>
 
-<%= submit_tag %>
+<%= f.submit "Log in", class: "btn btn-primary" %>
 <% end %>
+
+<p>New to Tasters? <%= link_to "Sign up now!", signup_path %></p>
