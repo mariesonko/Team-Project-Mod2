@@ -2,7 +2,12 @@ class HangoutsController < ApplicationController
 
   def index
     @hangouts = Hangout.all
-  end
+    # if logged_in?
+    # @hangouts = current_user.hangouts
+    # else
+    # @hangouts = Hangout.where(user_id: nil)
+  # end
+end
 
   def new
     @hangout = Hangout.new

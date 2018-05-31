@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     if @user.valid?
       redirect_to @user
     else
-      flash[:errors] = @user.errors.full_messages.join(', ') 
+      flash[:errors] = @user.errors.full_messages.join(', ')
       redirect_to signup_path
     end
   end
