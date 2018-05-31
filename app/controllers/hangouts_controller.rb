@@ -4,24 +4,26 @@ class HangoutsController < ApplicationController
     @hangouts = Hangout.all
   end
 
-  def show
-    @hangout = Hangout.find(params[:id])
-  end
-
   def new
     @hangout = Hangout.new
   end
 
   def create
-    @hangout= Hangout.new(hangout_params)
+    @hangout= Hangout.create(hangout_params)
     @user = User.find_or_create_by(name: params[:user][:name])
-    @hangout.user = @user
+    @hangout.host = @user
+    @hangout.guest = @user
 
-    if @hangout.save
-      redirect_to user_path(@user)
+    if @hangout.valid?
+      redirect_to @user
     else
-      render 'new'
+      flash[:errors] = @hangout.errors.full_messages.join(', ')
+      render "new"
     end
+  end
+
+  def show
+    @hangout = Hangout.find(params[:id])
   end
 
   def edit
@@ -29,11 +31,18 @@ class HangoutsController < ApplicationController
   end
 
   def update
-      @hangout = Hangout.find(params[:id])
-      redirect_to user_path(session[:current_user_id])
+      # @hangout = Hangout.find(params[:id])
+      # redirect_to user_path(session[:current_user_id])
+  end
+
+  def destroy
+    @hangout = Article.find(params[:id])
+  @hangout.destroy
+  redirect_to hangouts_path, notice: "Delete success"
   end
 
   private
+
   def hangout_params
   params.require(:hangout).permit(:date, :time, :restaurant_id)
   end

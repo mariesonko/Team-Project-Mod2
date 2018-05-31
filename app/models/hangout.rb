@@ -5,7 +5,4 @@ class Hangout < ApplicationRecord
   validates :guest_id, presence: true
   validates :host_id, presence: true
 
-  # def host_name=(name)
-  #   self.host = User.find_or_create_by(name)
-  # end
 end
