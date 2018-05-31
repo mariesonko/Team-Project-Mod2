@@ -4,7 +4,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
+      @user = current_user
+
   end
 
   def create
@@ -13,6 +15,7 @@ class UsersController < ApplicationController
       log_in(@user)
       redirect_to user_path(@user)
     else
+      flash.now[:errors] = @user.errors.full_messages.join(', ')
       render :new
     end
 

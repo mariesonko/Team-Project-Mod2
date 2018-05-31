@@ -3,8 +3,12 @@ Rails.application.routes.draw do
   root 'application#hello'
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
+  patch '/update', to: 'hangouts#update'
   resources :users, except: :index
   resources :hangouts, only: [:index, :new, :create, :show, :edit, :update]
+  # resources :hangouts do
+  #   match :join, via: [:post, :delete], :on => :user
+  # end
   resources :restaurants, only: [:index, :show]
   get '/login'=> 'sessions#new'
   post '/login'=> 'sessions#create'

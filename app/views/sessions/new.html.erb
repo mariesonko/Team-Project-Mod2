@@ -1,13 +1,14 @@
+<%= flash[:danger] %>
 <h1>Log In</h1>
 <%= form_for(:session, url: login_path) do |f| %>
-
+<br>
 <%= f.label :email %>
-<%= f.email_field :email, class: 'form-control' %>
-
+<%= f.email_field :email %>
+<br>
 <%= f.label :password %>
-<%= f.password_field :password, class: 'form-control' %>
-
-<%= f.submit "Log in", class: "btn btn-primary" %>
+<%= f.password_field :password %>
+<br>
+<%= f.submit "Log in"%>
 <% end %>
 
-<p>New to Tasters? <%= link_to "Sign up now!", signup_path %></p>
+<p>New to Tasters? <%= button_to "Sign Up Now!", signup_path, method: :get %></p>

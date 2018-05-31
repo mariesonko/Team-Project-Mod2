@@ -2,4 +2,25 @@
 <%= link_to "Create Hangout", new_hangout_path %><br>
 <%= link_to "Join Hangout", hangouts_path %>
 
-<%= link_to "Log Out", logout_path, method: :post %>
+<h4>Hosting Hangouts</h4>
+<ul>
+<%@user.active_hangouts.each do |hangout|%><br>
+<li><%= link_to hangout.restaurant.name, hangout_path(hangout) %>
+<%= hangout.date %>
+<%= hangout.time %>
+</li>
+<% end %>
+</ul>
+
+<h4>Guesting</h4>
+<ul>
+    <% @user.passive_hangouts.each do |hangout| %>
+    <li>
+        <%= link_to hangout.restaurant.name, hangout_path(hangout) %>
+        <%= hangout.date %>
+        <%= hangout.time %>
+    </li>
+    <% end %>
+</ul>
+
+<%= button_to "Log Out", logout_path, method: :post %>

@@ -7,9 +7,11 @@
 
 
 <br>
-<%= link_to "Back To All Hangouts", hangouts_path %>
+<%= form_tag update_path, method: :patch do %>
+    <%= hidden_field_tag :hangout_id, @hangout.id %>
+    <%= submit_tag "Join this Hangout!" %>
+<% end %>
+
 <br>
-<!-- add a 'join' button that associates the current session[:user] as the 'guest' to this hangout -->
+<%= button_to "Back To Hangouts", hangouts_path, method: :get %>
 <br>
-<!-- we want to use the session[session[:current_user_id]] -->
-<!-- <%= button_to "Join", user_path(@hangout.guest_id), method: :join %> -->

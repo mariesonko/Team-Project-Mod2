@@ -1,11 +1,7 @@
+<%= flash[:errors] %>
 <h1>Create a New Hangout </h1>
 
 <%= form_for @hangout do |f| %>
-
-<%= fields_for :user do |user|%>
-<%= user.label :name%>
-<%=  user.text_field :name%>
-<% end  %>
 
   <%= f.label :date, "Date" %>
   <%= f.text_field :date %>
