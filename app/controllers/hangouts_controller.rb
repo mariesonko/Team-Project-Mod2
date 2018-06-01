@@ -1,56 +1,64 @@
 class HangoutsController < ApplicationController
 
   def index
-    @hangouts = Hangout.all
-    # if logged_in?
-    # @hangouts = current_user.hangouts
-    # else
-    # @hangouts = Hangout.where(user_id: nil)
-  # end
-end
+    @hangouts = Hangout.search(params[:search])
+      if params[:search]
+          @hangouts = Hangout.search(params[:search])
+        else
+          @hangouts = Hangout.all
+      end
 
-  def new
-    @hangout = Hangout.new
-  end
+     if !logged_in?
+       redirect_to login_path
+     end
+   end
 
-  def create
-    @hangout= Hangout.create(hangout_params)
-    @user = User.find_or_create_by(name: params[:user][:name])
-    @hangout.host = @user
-    @hangout.guest = @user
+   def show
+     if !logged_in?
+       redirect_to login_path
+     else
+     @hangout = Hangout.find(params[:id])
+     end
+   end
 
-    if @hangout.valid?
-      redirect_to @user
-    else
-      flash[:errors] = @hangout.errors.full_messages.join(', ')
-      render "new"
-    end
-  end
+   def new
+     @hangout = Hangout.new
+   end
 
-  def show
-    @hangout = Hangout.find(params[:id])
-  end
+   def create
+     @hangout = Hangout.new(hangout_params)
+     @user = current_user
+     @hangout.host = @user
 
-  def edit
-    @hangout = Hangout.find(params[:id])
-  end
+     if @hangout.save
+       redirect_to user_path(@user)
+     else
+       flash.now[:errors] = @hangout.errors.full_messages.join(', ')
+       render 'new'
+     end
+   end
 
-  def update
-      # @hangout = Hangout.find(params[:id])
-      # redirect_to user_path(session[:current_user_id])
-  end
+   def edit
+     @hangout = Hangout.find(params[:id])
+   end
 
-  def destroy
-    @hangout = Article.find(params[:id])
-  @hangout.destroy
-  redirect_to hangouts_path, notice: "Delete success"
-  end
+   def update
+       @hangout = Hangout.find(params[:hangout_id])
+       @hangout.update(guest: current_user)
 
-  private
+       if @hangout.save
+         redirect_to user_path(current_user)
+       else
 
-  def hangout_params
-  params.require(:hangout).permit(:date, :time, :restaurant_id)
-  end
+         render :show
+       end
+   end
+
+   private
+   def hangout_params
+     params.require(:hangout).permit(:date, :time, :restaurant_id)
+   end
+
 
 
 end

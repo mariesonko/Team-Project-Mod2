@@ -5,4 +5,7 @@ class Hangout < ApplicationRecord
   validates :guest_id, presence: true
   validates :host_id, presence: true
 
+  def self.search(search)
+    search.present? ? self.all.select { |hangout| hangout.time.downcase.include?(search.downcase) } : self.all
+end
 end

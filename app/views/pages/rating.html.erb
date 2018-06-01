@@ -1,0 +1,11 @@
+<h1>All Restaurant Rating</h1>
+
+<ul>
+  <% restaurant_rating.each do |restaurant|%>
+    <li><%= restaurant.name %></li>
+    <ul><li>Rating: <%= restaurant.rating %></li></ul>
+  <% end %>
+</ul>
+
+<br>
+<%= link_to "Enter the Taste", login_path %>

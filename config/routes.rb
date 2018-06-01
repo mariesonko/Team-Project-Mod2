@@ -3,11 +3,15 @@ Rails.application.routes.draw do
   root 'application#hello'
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
+  patch '/update', to: 'hangouts#update'
   resources :users, except: :index
-  resources :hangouts
+  resources :hangouts, only: [:index, :new, :create, :show, :edit, :update]
+
   resources :restaurants, only: [:index, :show]
   get '/login'=> 'sessions#new'
   post '/login'=> 'sessions#create'
   post '/logout'=> 'sessions#destroy'
-  #should above destroy route be post or delete?
+  get '/pages/cuisine', to: 'pages#cuisine'
+  get '/pages/date', to: 'pages#date'
+  get '/pages/rating', to: 'pages#rating'
 end
