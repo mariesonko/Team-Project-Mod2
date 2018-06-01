@@ -1,12 +1,14 @@
 class HangoutsController < ApplicationController
 
   def index
-    @hangouts = Hangout.search(params[:search])
-      if params[:search]
-          @hangouts = Hangout.search(params[:search])
-        else
-          @hangouts = Hangout.all
-      end
+    @hangouts = Hangout.all
+
+    # @hangouts = Hangout.search(params[:search])
+    #   if params[:search]
+    #       @hangouts = Hangout.search(params[:search])
+    #     else
+    #       @hangouts = Hangout.all
+    #   end
 
      if !logged_in?
        redirect_to login_path

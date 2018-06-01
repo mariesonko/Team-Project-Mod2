@@ -1,8 +1,8 @@
 class Hangout < ApplicationRecord
-  belongs_to :guest, class_name: "User"
+  belongs_to :guest, class_name: "User", optional: true
   belongs_to :host, class_name: "User"
   belongs_to :restaurant
-  validates :guest_id, presence: true
+
   validates :host_id, presence: true
 
   def self.search(search)
