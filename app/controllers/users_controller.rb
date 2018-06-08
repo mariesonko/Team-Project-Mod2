@@ -18,11 +18,11 @@ class UsersController < ApplicationController
       flash.now[:errors] = @user.errors.full_messages.join(', ')
       render :new
     end
+  end
 
     def show
       # @user = User.find(params[:id])
         @user = current_user
-
     end
 
     def create
@@ -42,6 +42,5 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
-
 
 end
