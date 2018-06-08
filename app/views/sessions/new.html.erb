@@ -1,14 +1,16 @@
-<%= flash[:danger] %>
-<h1>Log In</h1>
-<%= form_for(:session, url: login_path) do |f| %>
-<br>
-<%= f.label :email %>
-<%= f.email_field :email %>
-<br>
-<%= f.label :password %>
-<%= f.password_field :password %>
-<br>
-<%= f.submit "Log in"%>
-<% end %>
 
-<p>New to Tasters? <%= button_to "Sign Up Now!", signup_path, method: :get %></p>
+
+    <%= flash[:danger] %>
+    <h1>Log In</h1>
+    <%= form_for(:session, url: login_path) do |f| %>
+    <br>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+    <br>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+    <br>
+    <%= f.submit "Log in"%>
+    <% end %>
+    
+    <p>New to Tasters? <%= button_to "Sign Up Now!", signup_path, method: :get %></p>

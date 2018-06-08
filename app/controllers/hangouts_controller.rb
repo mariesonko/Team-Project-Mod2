@@ -2,7 +2,7 @@ class HangoutsController < ApplicationController
 
   def index
     @hangouts = Hangout.all
-
+    
     if !logged_in?
       redirect_to login_path
     end
