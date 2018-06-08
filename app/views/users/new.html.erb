@@ -1,19 +1,46 @@
+<div class="container" style="width: 60%; margin-top: 5%;">
 
-<%= flash[:errors]%>
-<h1>Sign Up!</h1>
+	<div class="card card-outline-secondary">
+		<div class="card-header">
+				<h3 class="mb-0">Sign Up!</h3>
+		</div>
 
-<%= form_for(@user) do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-    <br>
-    <%= f.label :email %>
-    <%= f.email_field :email %>
-    <br>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-    <br>
-    <%= f.label :password_confirmation, "Password Confirmation" %>
-    <%= f.password_field :password_confirmation %>
-    <br>
-    <%= f.submit "Create my Account" %>
- <% end %>
+		<div class="card-body">
+			<%= flash[:errors]%>
+
+
+			<%= form_for(@user) do |f| %>
+
+			<div class="form-group row">
+				<%= f.label :name, class: "col-lg-3 col-form-label form-control-label" %>
+				<div class="col-lg-9">
+			    <%= f.text_field :name, class: "form-control" %>
+				</div>
+			</div>
+			    <br>
+			<div class="form-group row">
+				<%= f.label :email, class: "col-lg-3 col-form-label form-control-label"  %>
+				<div class="col-lg-9">
+			    <%= f.email_field :email, class: "form-control" %>
+				</div>
+			</div>
+			    <br>
+			<div class="form-group row">
+				<%= f.label :password, class: "col-lg-3 col-form-label form-control-label"  %>
+				<div class="col-lg-9">
+			    <%= f.password_field :password, class: "form-control" %>
+				</div>
+			</div>
+			    <br>
+			<div class="form-group row">
+				<%= f.label :password_confirmation, "Password Confirmation", class: "col-lg-3 col-form-label form-control-label"  %>
+				<div class="col-lg-9">
+			    <%= f.password_field :password_confirmation, class: "form-control" %>
+				</div>
+			</div>
+			    <br>
+			    <%= f.submit "Create my Account", class: "btn btn-primary" %>
+			 <% end %>
+		</div>
+	</div>
+</div>

@@ -2,57 +2,56 @@ class HangoutsController < ApplicationController
 
   def index
     @hangouts = Hangout.all
-    
-    if !logged_in?
-      redirect_to login_path
-    end
-  end
 
-  def show
-    if !logged_in?
-      redirect_to login_path
-    else
-    @hangout = Hangout.find(params[:id])
-    end 
-  end
+     if !logged_in?
+       redirect_to login_path
+     end
+   end
 
-  def new
-    @hangout = Hangout.new
-  end
+   def show
+     if !logged_in?
+       redirect_to login_path
+     else
+     @hangout = Hangout.find(params[:id])
+     end
+   end
 
-  def create
-    @hangout = Hangout.new(hangout_params)
-    @user = current_user
-    @hangout.host = @user
+   def new
+     @hangout = Hangout.new
+   end
 
-    if @hangout.save
-      redirect_to user_path(@user)
-    else
-      flash.now[:errors] = @hangout.errors.full_messages.join(', ')
-      render 'new'
-    end
-  end
+   def create
+     @hangout = Hangout.new(hangout_params)
+     @user = current_user
+     @hangout.host = @user
 
-  def edit
-    @hangout = Hangout.find(params[:id])
-  end
+     if @hangout.save
+       redirect_to user_path(@user)
+     else
+       flash.now[:errors] = @hangout.errors.full_messages.join(', ')
+       render 'new'
+     end
+   end
 
-  def update
-      @hangout = Hangout.find(params[:hangout_id])
-      @hangout.update(guest: current_user) 
-     
-      if @hangout.save
-        redirect_to user_path(current_user)
-      else
+   def edit
+     @hangout = Hangout.find(params[:id])
+   end
 
-        render :show
-      end
-  end
+   def update
+       @hangout = Hangout.find(params[:hangout_id])
+       @hangout.update(guest: current_user)
 
-  private
-  def hangout_params
-    params.require(:hangout).permit(:date, :time, :restaurant_id)
-  end
+       if @hangout.save
+         redirect_to user_path(current_user)
+       else
 
+         render :show
+       end
+   end
+
+   private
+   def hangout_params
+     params.require(:hangout).permit(:date, :time, :restaurant_id)
+   end
 
 end

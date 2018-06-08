@@ -1,24 +1,59 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
- 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>The Tasters</title>
- 
-</head>
-<body>
-    <div class="center jumbotron">
-        <h1>Welcome to The Tasters!</h1>
-        <h3>Find some Food. Find a Friend</h3>
-        <br>
-        <%= link_to "Enter the Taste!", login_path , class: "btn btn-lg btn-primary" %>
-    </div>
-    <div>
-        <%= render 'layouts/footer' %>
-    </div>
+  <head>
 
-</body>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>The Tasters</title>
+      <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+      <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+      <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+
+  </head>
+
+  <body>
+    <div class="container-fluid">
+    <div class="title-arch"><h1>Welcome to The Tasters!</h1> </div>
+    	<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 project wow animated animated4 fadeInLeft">
+            <div class="project-hover">
+            	<h2>Cuisine</h2>
+
+                <hr />
+                <p>Your Favorite Flavors Your Freaking Way!!!</p>
+                <a href="<%= pages_cuisine_path %>">Browse By Cuisine</a>
+            </div>
+        </div>
+    	<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 project project-2 wow animated animated3 fadeInLeft">
+        	<div class="project-hover">
+            	<h2>Restaurant</h2>
+                <hr />
+                <p>Hot Spots Where Your Hunger Drops!</p>
+                <a href="<%= restaurants_path %>">Browse By Restaurant</a>
+            </div>
+        </div>
+    	<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 project project-3 wow animated animated2 fadeInLeft">
+        	<div class="project-hover">
+            	<h2>Date</h2>
+                <hr />
+                <p>See When Things Are Going Down</p>
+                <a href="<%= pages_date_path %>">Browse By Date</a>
+            </div>
+        </div>
+    	<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 project project-4 wow animated fadeInLeft">
+        	<div class="project-hover">
+            	<h2>Rating</h2>
+                <hr />
+                <p>The Best...of The Best</p>
+                <a href="<%= pages_rating_path %>">Browse By Rating</a>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+  </body>
 </html>

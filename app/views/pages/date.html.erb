@@ -1,0 +1,10 @@
+<h1>All Hangouts Dates</h1>
+
+<ul>
+<% hangout_date.each do |hangout|%>
+    <li><%= hangout.date %></li>
+  <% end %>
+</ul>
+
+<br>
+<%= link_to "Enter the Taste", login_path %>

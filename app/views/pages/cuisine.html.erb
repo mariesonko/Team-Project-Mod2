@@ -1,0 +1,15 @@
+
+<div id="awan">
+
+  <h1>All cuisines</h1>
+
+  <ul>
+    <% Restaurant.all.each do |restaurant| %>
+      <li><%= restaurant.cuisine %></li>
+    <% end %>
+  </ul>
+
+</div>
+
+<br>
+<%= link_to "Enter the Taste", login_path %>

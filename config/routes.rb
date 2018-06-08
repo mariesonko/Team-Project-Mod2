@@ -6,12 +6,11 @@ Rails.application.routes.draw do
   patch '/update', to: 'hangouts#update'
   resources :users, except: :index
   resources :hangouts, only: [:index, :new, :create, :show, :edit, :update]
- 
   resources :restaurants, only: [:index, :show]
   get '/login'=> 'sessions#new'
   post '/login'=> 'sessions#create'
   post '/logout'=> 'sessions#destroy'
- 
-  get 'pages/about', to: 'pages#about'
-
+  get '/pages/cuisine', to: 'pages#cuisine'
+  get '/pages/date', to: 'pages#date'
+  get '/pages/rating', to: 'pages#rating'
 end
